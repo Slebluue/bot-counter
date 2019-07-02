@@ -133,6 +133,11 @@ bot.on('message', message => {
             message.channel.send('Your UID is : ' + message.author.id)
         } else if (isCmd("counterhelp") || isCmd("help")) {
             message.channel.send('Command list : https://github.com/Zeptaxis/bot-counter/blob/master/README.md');
+        } else if (isCmd("rules")) {
+            var output = '```\r\n';
+            output += '1. Every update to a counter must have a screenshot posted alongside it as proof. If not provided value may be reset' + '\r\n'
+            output += '```';
+            message.channel.send(output);
         } else if (isCmd("listcounters")) {
             var output = '```\r\n';
             for (var key in counters) {
