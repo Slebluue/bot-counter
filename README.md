@@ -59,3 +59,9 @@ See the leaderboard : `!badjokes leaderboard`
 
 [Node.js]: https://nodejs.org/
 [Discord API]: https://discordapp.com/developers/applications/me
+
+
+---
+
+##### SleBluue Notes
+- Forked so I can add functionality, and host the bot on heroku. full credit goes to creator
