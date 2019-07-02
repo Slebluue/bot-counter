@@ -1,6 +1,3 @@
-// to read the settings file
-var PropertiesReader = require('properties-reader');
-
 // to interact with Discord
 const Discord = require('discord.js');
 
@@ -9,34 +6,21 @@ var fs = require("fs");
 // to eval expressions
 var math = require("mathjs");
 
-var properties;
-try {
-    properties = PropertiesReader('settings.properties')
-} catch (err) {
-    console.log("You need to create a settings.properties file in the application folder. See README for more informations.");
-    process.exit(1);
-};
-
 // initialize the bot
 const bot = new Discord.Client();
 
-const token = properties.get('token');
+const token = process.env.BOT_TOKEN;
 if (!token) {
-    console.log("settings.properties file is missing a 'token = <your token>' line. Check README if you don't know how to get your token.");
+    console.log("env file is missing a 'token = <your token>' line. Check README if you don't know how to get your token.");
     process.exit(1);
 };
 
 // retrieve the ownerID from the config file
-var ownerID = properties.get('ownerID');
+var ownerID = process.env.OWNER_ID;
+
 
 // retrieve the prefix for the bot
-var prefix = properties.get('prefix');
-if (!prefix) {
-    console.log("Please add setting 'prefix' to settings.properties !");
-	console.log("Using default prefix : !");
-    properties.set('prefix', '!');
-    prefix = "!";
-};
+var prefix = process.env.PREFIX;
 
 // the regex we will use to check if the name is valid
 var inputFilter = /^[A-Za-z0-9]+$/;

@@ -1,3 +1,4 @@
 counters.json
 settings.properties
+.env
 node_modules/
